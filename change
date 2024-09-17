@@ -1,0 +1,9 @@
+angular.json -> prefix: "app" ==> "wac"
+add dans serve
+"serve": {
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          },
+
+selector dans app.component + html
+selector: 'wac-root',
