@@ -24,4 +24,12 @@ public class ConversationToCreate {
         Assert.notNull("name", name);
         Assert.notNull("members", members);
     }
+
+    public Set<UserPublicId> getMembers() {
+        return members;
+    }
+
+    public ConversationName getName() {
+        return name;
+    }
 }

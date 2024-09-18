@@ -2,8 +2,8 @@ package be.hanagami.whatsappclone.messaging.domain.message.aggregate;
 
 import be.hanagami.whatsappclone.messaging.domain.message.vo.ConversationName;
 import be.hanagami.whatsappclone.messaging.domain.message.vo.ConversationPublicId;
+import be.hanagami.whatsappclone.messaging.domain.user.aggregate.User;
 import be.hanagami.whatsappclone.shared.error.domain.Assert;
-import org.apache.catalina.User;
 import org.jilt.Builder;
 
 import java.util.Set;

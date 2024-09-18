@@ -20,6 +20,8 @@ public class User {
 
     private UserImageUrl imageUrl;
 
+    private Instant lastModifiedDate;
+
     private Instant createDate;
 
     private Instant lastSeen;
@@ -29,13 +31,14 @@ public class User {
     private Long dbId;
 
     public User(UserLastName lastName, UserFirstName firstName, UserEmail email, UserPublicId userPublicId,
-                UserImageUrl ImageUrl, Instant crateDate, Instant lastSeen, Set<Authority> authorities, Long dbId) {
+                UserImageUrl ImageUrl, Instant lastModifiedDate, Instant crateDate, Instant lastSeen, Set<Authority> authorities, Long dbId) {
         assertMandatoryFields(lastName, firstName, email, authorities);
         this.lastName = lastName;
         this.firstName = firstName;
         this.email = email;
         this.userPublicId = userPublicId;
         this.imageUrl = ImageUrl;
+        this.lastModifiedDate = lastModifiedDate;
         this.createDate = crateDate;
         this.lastSeen = lastSeen;
         this.authorities = authorities;
@@ -81,6 +84,10 @@ public class User {
 
     public UserImageUrl getImageUrl() {
         return imageUrl;
+    }
+
+    public Instant getLastModifiedDate() {
+        return lastModifiedDate;
     }
 
     public Instant getCreateDate() {

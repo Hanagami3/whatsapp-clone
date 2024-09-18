@@ -1,7 +1,7 @@
 package be.hanagami.whatsappclone.shared.authentication.domain;
 
 
-import fr.codecake.whatsappclone.shared.error.domain.Assert;
+import be.hanagami.whatsappclone.shared.error.domain.Assert;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Optional;

@@ -1,5 +1,9 @@
 package be.hanagami.whatsappclone.infrastructure.secondary.entity;
 
+import be.hanagami.whatsappclone.infrastructure.secondary.entity.AuthorityEntityBuilder;
+import be.hanagami.whatsappclone.messaging.domain.user.aggregate.Authority;
+import be.hanagami.whatsappclone.messaging.domain.user.aggregate.AuthorityBuilder;
+import be.hanagami.whatsappclone.messaging.domain.user.vo.AuthorityName;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,6 +15,7 @@ import org.jilt.Builder;
 
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "authority")
@@ -32,8 +37,19 @@ public class AuthorityEntity {
     public AuthorityEntity() {
     }
 
-    public static Set<AuthorityEntity> from(Set<Autority> autorities){
+    public static Set<AuthorityEntity> from(Set<Authority> authorities){
+        return authorities
+                .stream()
+                .map(authority -> AuthorityEntityBuilder
+                        .authorityEntity()
+                        .name(authority.getName().name()).build()).collect(Collectors.toSet());
+    }
 
+    public static Set<Authority> toDomain(Set<AuthorityEntity> authoritiesEntities) {
+        return authoritiesEntities.stream()
+                .map(authority -> AuthorityBuilder.authority()
+                        .name(new AuthorityName(authority.name)).build())
+                .collect(Collectors.toSet());
     }
 
     @Override
