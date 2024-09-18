@@ -1,6 +1,7 @@
 package be.hanagami.whatsappclone.messaging.domain.message.aggregate;
 
 import be.hanagami.whatsappclone.messaging.domain.message.vo.*;
+import be.hanagami.whatsappclone.messaging.domain.user.vo.UserPublicId;
 import org.jilt.Builder;
 import be.hanagami.whatsappclone.shared.error.domain.Assert;
 
@@ -21,13 +22,14 @@ public class Message {
 
     public Message(MessageSentTime sentTime, MessageContent content,
                    MessageSendState sendState, MessagePublicId publicId,
-                   UserPublicId sender, ConversationPublicId conversationPublicId) {
+                   UserPublicId sender, ConversationPublicId conversationId) {
+        assertMandatoryFields(sentTime, content, sendState, publicId, sender, conversationId);
         this.sentTime = sentTime;
         this.content = content;
         this.sendState = sendState;
         this.publicId = publicId;
         this.sender = sender;
-        this.conversationPublicId = conversationPublicId;
+        this.conversationPublicId = conversationId;
     }
 
     private void assertMandatoryFields(MessageSentTime sentTime,
